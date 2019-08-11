@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 #include <node.h>
+#include "nan.h"
 #include <uv.h>
 #include <time.h>
 #include <stdlib.h>
@@ -60,7 +61,7 @@ void _Start(const FunctionCallbackInfo<Value> &args)
 
 void _Exit(const FunctionCallbackInfo<Value> &args)
 {
-    exit(args[0]->Int32Value());
+    exit(args[0]->Int32Value(Nan::GetCurrentContext()).FromJust());
 }
 
 void init(Local<Object> exports)
